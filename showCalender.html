@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Display Calender </title>
+
+<script type="text/javaScript">
+
+	function showCalender()
+	{	
+		var m = parseInt(document.getElementById("month").value);
+		var y = parseInt(document.getElementById("year").value);
+		var month=["","jan","Feb","Mar","Apr","may","Jun","Jul","Aug","Sep","Oct","Nov","dec"];	
+		
+		document.write(month[m]);
+		document.write(y);
+
+		var d = new Date(y,m,1).getDay();
+		var ld = new Date(y,m+1,0).getDate();
+		
+		document.write(d+"<br>");
+		document.write(ld);
+
+		document.write("<table border='1'>")
+		document.write("<tr><td>Sun</td><td>Mon</td><td>Tue</td><td>Wed</td><td>Thur</td><td>Fri</td><td>Sat</td></tr>");
+
+		document.write("<tr>");
+		for(var i=1;i<=ld;i++)
+		{
+			if(i==1)
+			{
+				for(j=1;j<=d;j++)document.write("<td></td>");			
+			}
+			if(d>6)
+			{
+				d=0;
+				document.write("</tr>");
+				document.write("<tr>");
+			}
+			document.write("<td>"+i+"</td>");
+			d++;
+		}
+		document.write("</tr>");
+
+	}
+</script>
+</head>
+<body>
+
+<form>
+	<table align="center">
+	 <tr><td><label for="year">Enter Year : </label>	</td>
+	<td><input type="text" id="year" name="yr" autocomplete="off" required></td></tr>
+
+\
+
+	<tr><td><label for="year">Enter Month : </label></td>	
+	<td><input type="text" id="month" name="mo" autocomplete="off" required></td></tr>
+	
+
+
+	<tr><td colspan="2"><input type="submit" value="Submit" onClick="showCalender()"></td></tr>
+
+</form>
+
+</body>
+
+</html>	
